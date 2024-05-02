@@ -25,18 +25,35 @@ def addchild(request):
 
 
 
+
 @api_view(['PUT'])
-def updatechild(request,pk):
-    data= request.data
-    child =child.object.get(id=pk)
-    serializer=ChildSerializaers(child,data=data)
+def updatechild(request, pk):
+    try:
+        child = Child.objects.get(id=pk)
+    except Child.DoesNotExist:
+        return Response({"error": "Child not found"}, status=404)
+    
+    serializer = ChildSerializaers(child, data=request.data)
     if serializer.is_valid():
-         serializer.save()
-    return Response(serializer.data)
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=400)
+
+
+
+
+
+
+
+
+
 
 @api_view(['DELETE'])
 def deletechild(request,pk):
-    child  =Child.objects.get(id=pk)
+    try:
+        child = Child.objects.get(id=pk)
+    except Child.DoesNotExist:
+        return Response({"error": "Child not found"}, status=404)
     child.delete()   
     return Response('Note was deleted')
 

@@ -22,7 +22,7 @@ class Child(models.Model):
       DateofBirth=models.DateField()
       height=models.FloatField()
       wieght=models.FloatField()
-      motherID=models.ForeignKey(Mother,on_delete=models.CASCADE)
+     # mother=models.ForeignKey(Mother,on_delete=models.CASCADE ,default="mother")
       #objects = ChildManager()
       #vaccines =models.ManyToManyField('Child',related_name='Vaccines',blank=True)
       def __str__(self):
