@@ -6,6 +6,7 @@ from .models import *
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 
+
 @api_view(['GET'])
 def childs(request):
      child =Child.objects.all()
@@ -56,5 +57,3 @@ def deletechild(request,pk):
         return Response({"error": "Child not found"}, status=404)
     child.delete()   
     return Response('Note was deleted')
-
-

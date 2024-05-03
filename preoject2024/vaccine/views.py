@@ -5,7 +5,7 @@ from .serializers import *
 from .models import *
 from rest_framework import status
 from django.shortcuts import get_object_or_404
-from child.models import Child
+from childs.models import Child
 
 @api_view(['GET'])
 def nearest_vaccine__all(request, pk):

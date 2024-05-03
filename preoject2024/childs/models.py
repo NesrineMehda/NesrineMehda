@@ -2,11 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
       
-class Mother(models.Model):
-      username=models.CharField(max_length=50)
-      email =models.EmailField()
-      phone_number=models.CharField(max_length=20)
-      password =models.CharField(max_length=20)
+
       
          
       
@@ -22,9 +18,9 @@ class Child(models.Model):
       DateofBirth=models.DateField()
       height=models.FloatField()
       wieght=models.FloatField()
-     # mother=models.ForeignKey(Mother,on_delete=models.CASCADE ,default="mother")
+      #mother=models.ForeignKey(Mother,on_delete=models.CASCADE ,default=None)
       #objects = ChildManager()
-      #vaccines =models.ManyToManyField('Child',related_name='Vaccines',blank=True)
+      
       def __str__(self):
           return self.firstname
       def age_in_days(self):
@@ -60,4 +56,3 @@ class Child(models.Model):
             age_days += last_day_prev_month
 
         return age_years, age_months, age_days
-    

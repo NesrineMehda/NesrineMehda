@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('user.urls')),
     path('chat/',include('user.urls')),
-    path('childs/',include("child.urls")),
+    path('childs/',include("childs.urls")),
     path('vaccine/',include("vaccine.urls")),
     path('fever/',include("fever.urls")),
     

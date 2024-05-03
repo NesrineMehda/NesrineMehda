@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user.apps.UserConfig',
-    'child.apps.ChildConfig',
+    'childs.apps.ChildsConfig',
     'fever.apps.FeverConfig',
     'vaccine.apps.VaccineConfig',
     'django.contrib.admin',
