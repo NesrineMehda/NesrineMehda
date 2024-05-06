@@ -23,6 +23,6 @@ urlpatterns = [
     path('chat/',include('user.urls')),
     path('childs/',include("childs.urls")),
     path('vaccine/',include("vaccine.urls")),
-    path('fever/',include("fever.urls")),
+    path('fever/',include("fever2.urls")),
     
 ]

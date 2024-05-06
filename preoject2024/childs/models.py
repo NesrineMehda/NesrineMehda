@@ -18,8 +18,8 @@ class Child(models.Model):
       DateofBirth=models.DateField()
       height=models.FloatField()
       wieght=models.FloatField()
-      #mother=models.ForeignKey(Mother,on_delete=models.CASCADE ,default=None)
-      #objects = ChildManager()
+      user=models.ForeignKey(User,on_delete=models.CASCADE,default=None )
+     
       
       def __str__(self):
           return self.firstname
@@ -56,3 +56,36 @@ class Child(models.Model):
             age_days += last_day_prev_month
 
         return age_years, age_months, age_days
+   
+      def CalculateBMI(self):
+            age = self.age().age_year
+            weight = self.wieght
+            height = self.height
+
+            # Perform BMI calculation logic here
+            bmi = weight / (height * height)
+            if age < 2:
+            # BMI categories for children under 2 years old
+             if bmi < 16:
+                bmi_category = 'Underweight'
+             elif bmi < 18:
+              bmi_category = 'Normal weight'
+             elif bmi < 20:
+               bmi_category = 'Overweight'
+             else:
+              bmi_category = 'Obese'
+            else:
+            # BMI categories for children aged 2 to 6 years old
+             if bmi < 15:
+                bmi_category = 'Underweight'
+             elif bmi < 18.5:
+                bmi_category = 'Normal weight'
+             elif bmi < 25:
+              bmi_category = 'Overweight'
+             else:
+                bmi_category = 'Obese'
+            return bmi_category  
+           
+        
+
+           

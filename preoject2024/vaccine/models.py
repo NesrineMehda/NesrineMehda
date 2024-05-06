@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from childs.models import *
 
 class VaccinManager(models.Manager):
     def nearest_vaccine_for_child(self,child):
@@ -19,6 +20,8 @@ class VaccinManager(models.Manager):
         return nearest_vaccine
 
 class Vaccin(models.Model):
+       user = models.ForeignKey(User ,on_delete=models.CASCADE,default=None)
+       child = models.ForeignKey(Child ,on_delete=models.CASCADE,default=None)
        name =models.CharField(max_length=50)
        completed=models.BooleanField(default=False)
        decsription=models.CharField(max_length=500,null=True)

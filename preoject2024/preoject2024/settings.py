@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'user.apps.UserConfig',
     'childs.apps.ChildsConfig',
-    'fever.apps.FeverConfig',
+    'fever2.apps.Fever2Config',
     'vaccine.apps.VaccineConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,7 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+ 
+    ]
+}
+
+#AUTH_USER_MODEL = 'user.User'  
+#AUTH_USER_MODEL = 'user.CustomUser'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

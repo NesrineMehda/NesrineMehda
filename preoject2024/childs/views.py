@@ -41,14 +41,6 @@ def updatechild(request, pk):
     return Response(serializer.errors, status=400)
 
 
-
-
-
-
-
-
-
-
 @api_view(['DELETE'])
 def deletechild(request,pk):
     try:
@@ -57,3 +49,12 @@ def deletechild(request,pk):
         return Response({"error": "Child not found"}, status=404)
     child.delete()   
     return Response('Note was deleted')
+
+
+
+           
+
+
+
+
+
