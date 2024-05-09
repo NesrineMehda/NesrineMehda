@@ -10,12 +10,18 @@ class RoomSerializer(serializers.ModelSerializer):
 
 
 
+'''class MessageSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
+    class Meta:
+        model = Message
+        fields = ['id', 'value', 'date', 'user', 'room']'''
 class MessageSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = Message
-        fields = ['id', 'value', 'date', 'user', 'room']
+        fields = ['id', 'value', 'date', 'user', 'room', 'image']  # Include 'image' field
 
     def create(self, validated_data):
         room_name = validated_data.pop('room')
@@ -30,3 +36,4 @@ class MessageSerializer(serializers.ModelSerializer):
         # Create the message
         message = Message.objects.create(room=room, user=user, **validated_data)
         return message
+
